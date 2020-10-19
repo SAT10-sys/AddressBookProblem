@@ -16,7 +16,12 @@ namespace Address_Book_Problem
             switch (choiceOfOperation)
             {
                 case 1:
-                    addressBookMain.AddContactToBook();
+                    Console.WriteLine("Enter number of contacts to be added");
+                    int numberOfContacts = Convert.ToInt32(Console.ReadLine());
+                    for(int i=1;i<=numberOfContacts;i++)
+                    {
+                        addressBookMain.AddContactToBook();
+                    }
                     break;
                 case 2:
                     addressBookMain.EditUsingFirstName();

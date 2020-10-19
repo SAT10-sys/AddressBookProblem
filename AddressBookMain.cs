@@ -13,6 +13,7 @@ namespace Address_Book_Problem
         HashSet<PersonContactDetails> set = new HashSet<PersonContactDetails>();
         public void AddContactToBook()
         {
+            Console.WriteLine("Add new contact");
             string[] detailsOfPerson;
             //enter details from user
             Console.WriteLine("Enter the following details seperated by comma");
