@@ -86,5 +86,17 @@ namespace Address_Book_Problem
                 }
             }
         }
+        public void SearchContactByCityOrState(string cityOrState)
+        {
+
+            foreach (var contact in set)
+            {
+                if (contact.city == cityOrState || contact.state == cityOrState)
+                {
+                    Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\nAddress :" + contact.address + "   ZipCode :" + contact.zipCode + "\nPhone No :" + contact.phoneNumber + "   Email :" + contact.emailID);
+                }
+            }
+
+        }
     }
 }

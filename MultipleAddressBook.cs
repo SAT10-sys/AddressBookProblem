@@ -32,5 +32,16 @@ namespace Address_Book_Problem
                 return false;
             return true;
         }
+        public void SearchPersonByCityStateOverMultipleAddressBook(string cityOrState)
+        {
+            Dictionary<string, AddressBookMain>.Enumerator enumerator = multipleAddressBooks.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine("Name Of Address Book: " + enumerator.Current.Key);
+                Console.WriteLine();
+                enumerator.Current.Value.SearchContactByCityOrState(cityOrState);
+                Console.WriteLine("===========================================");
+            }
+        }
     }
 }

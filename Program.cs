@@ -41,7 +41,7 @@ namespace Address_Book_Problem
                         break;
                     OperationsOnAddressBook:
                     Console.WriteLine("Please enter your choice of operation(1 to 4)");
-                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.EXIT");
+                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.SEARCH CONTACT BY CITY OR STATE\n7..EXIT");
                     choiceOfAddressBookOperation = Convert.ToInt32(Console.ReadLine());
                     switch (choiceOfAddressBookOperation)
                     {
@@ -66,6 +66,11 @@ namespace Address_Book_Problem
                             multipleAddressBook.CheckDuplicateName();
                             break;
                         case 6:
+                            Console.WriteLine("Enter the city/state");
+                            string cityOrState = Console.ReadLine();
+                            multipleAddressBook.SearchPersonByCityStateOverMultipleAddressBook(cityOrState);
+                            break;
+                        case 7:
                             flag = false;
                             break;
                         default:
