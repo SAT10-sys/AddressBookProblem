@@ -10,7 +10,7 @@ namespace Address_Book_Problem
             Console.WriteLine(" =============================== ");
             AddressBookMain addressBookMain = new AddressBookMain();
             addressBookMain.AddContactToBook();
-            addressBookMain.DisplayAddressBook();
+            addressBookMain.EditUsingFirstName();
         }
     }
 }

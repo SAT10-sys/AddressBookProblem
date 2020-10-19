@@ -37,5 +37,34 @@ namespace Address_Book_Problem
                 Console.WriteLine("EMAIL ID: " + contact.emailID);
             }
         }
+        public void EditUsingFirstName()
+        {
+            string[] newDetailsOfPerson = new string[8];
+            Console.WriteLine("Enter first name of contact you want to edit ");
+            string firstName = Console.ReadLine();
+            foreach (PersonContactDetails contact in set)
+            {
+                if (firstName == contact.firstName)
+                {
+                    Console.WriteLine("Enter new details seperated by comma ");
+                    Console.WriteLine("First Name, Last Name, Address, City, State, Zipcode, Phone Number, Email ID");
+                    newDetailsOfPerson = Console.ReadLine().Split(",");
+                }
+                else
+                {
+                    Console.WriteLine("First Name not found in address book");
+                    EditUsingFirstName();
+                }
+            }
+            Console.WriteLine("Edited Details");
+            Console.WriteLine("FIRST NAME: " + newDetailsOfPerson[0]);
+            Console.WriteLine("LAST NAME: " + newDetailsOfPerson[1]);
+            Console.WriteLine("ADDRESS: " + newDetailsOfPerson[2]);
+            Console.WriteLine("CITY: " + newDetailsOfPerson[3]);
+            Console.WriteLine("STATE: " + newDetailsOfPerson[4]);
+            Console.WriteLine("ZIPCODE: " + newDetailsOfPerson[5]);
+            Console.WriteLine("PHONE NUMBER: " + newDetailsOfPerson[6]);
+            Console.WriteLine("EMAIL ID: " + newDetailsOfPerson[7]);
+        }
     }
 }
