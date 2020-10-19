@@ -11,6 +11,10 @@ namespace Address_Book_Problem
     public class AddressBookMain
     {
         HashSet<PersonContactDetails> set = new HashSet<PersonContactDetails>();
+        public AddressBookMain()
+        {
+            set = new HashSet<PersonContactDetails>();
+        }
         public void AddContactToBook()
         {
             Console.WriteLine("Add new contact");
@@ -96,7 +100,10 @@ namespace Address_Book_Problem
                     Console.WriteLine("Name :" + contact.firstName + " " + contact.lastName + "\nAddress :" + contact.address + "   ZipCode :" + contact.zipCode + "\nPhone No :" + contact.phoneNumber + "   Email :" + contact.emailID);
                 }
             }
-
+        }
+        public HashSet<PersonContactDetails> GetAddressBook()
+        {
+            return set;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Address_Book_Problem
 {
@@ -15,8 +16,9 @@ namespace Address_Book_Problem
             MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
             while (true)
             {
+                StartAddressBook:
                 bool flag = true;
-                Console.WriteLine("Enter your choice of operation(1 or 2)\n1.ADD ADDRESS BOOK\n2.GET ADDRESS BOOK\n");
+                Console.WriteLine("Enter your choice of operation(1 or 2)\n1.ADD ADDRESS BOOK\n2.GET ADDRESS BOOK\n3.VIEW PERSON BY CITY\n4.VIEW PERSON BY STATE\n5.EXIT");
                 choiceOfOperation = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter name of Address Book");
                 nameOfAddressBook = Console.ReadLine();
@@ -31,9 +33,48 @@ namespace Address_Book_Problem
                         if (addressBookMain == null)
                             Console.WriteLine("No such address book found");
                         break;
+                    case 3:
+                        citySearch:
+                        Console.WriteLine("Enter city name whose person details you want");
+                        string nameOfCity = Console.ReadLine();
+                        Dictionary<string, PersonContactDetails> cityDictionary = multipleAddressBook.CityDictionaryCollection();
+                        foreach (var dict in cityDictionary)
+                        {
+                            if (cityDictionary.ContainsKey(nameOfCity))
+                            {
+                                Console.WriteLine("First Name:" + dict.Value.firstName + "Last Name:" + dict.Value.lastName + "Address:" + dict.Value.address + "City:" + dict.Value.city + "State:" + dict.Value.state + "pincode:" + dict.Value.zipCode + "phone: " + dict.Value.phoneNumber + "email address:" + dict.Value.emailID + "\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("City doesn't exist");
+                                goto citySearch;
+                            }
+                        }
+                        break;
+                    case 4:
+                        stateSearch:
+                        Console.WriteLine("Enter state name whose person details you want");
+                        string stateRequired = Console.ReadLine();
+                        Dictionary<string, PersonContactDetails> stateDictionary = multipleAddressBook.StateDictionaryCollection();
+                        foreach (var dict in stateDictionary)
+                        {
+                            if (stateDictionary.ContainsKey(stateRequired))
+                            {
+                                Console.WriteLine("First Name:" + dict.Value.firstName + "Last Name:" + dict.Value.lastName + "Address:" + dict.Value.address + "City:" + dict.Value.city + "State:" + dict.Value.state + "pincode:" + dict.Value.zipCode + "phone: " + dict.Value.phoneNumber + "email address:" + dict.Value.emailID + "\n");
+                            }
+                            else
+                            {
+                                Console.WriteLine("State doesn't exist");
+                                goto stateSearch;
+                            }
+                        }
+                        break;
+                    case 5:
+                        flag = false;
+                        break;
                     default:
                         Console.WriteLine("Invalid Choice");
-                        break;
+                        goto StartAddressBook;
                 }
                 while (flag)
                 {

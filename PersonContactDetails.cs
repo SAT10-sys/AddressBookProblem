@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Address_Book_Problem
 {
-    class PersonContactDetails
+    public class PersonContactDetails
     {
         public string firstName;
         public string lastName;
