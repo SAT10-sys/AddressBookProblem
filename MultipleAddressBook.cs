@@ -24,5 +24,13 @@ namespace Address_Book_Problem
                 return multipleAddressBooks[nameOfAddressBook];
             return null;
         }
+        public bool CheckDuplicateName()
+        {
+            Console.WriteLine("Enter first name");
+            string firstName = Console.ReadLine();
+            if (multipleAddressBooks.ContainsKey(firstName))
+                return false;
+            return true;
+        }
     }
 }

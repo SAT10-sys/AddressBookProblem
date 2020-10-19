@@ -41,7 +41,7 @@ namespace Address_Book_Problem
                         break;
                     OperationsOnAddressBook:
                     Console.WriteLine("Please enter your choice of operation(1 to 4)");
-                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.EXIT");
+                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.EXIT");
                     choiceOfAddressBookOperation = Convert.ToInt32(Console.ReadLine());
                     switch (choiceOfAddressBookOperation)
                     {
@@ -63,6 +63,9 @@ namespace Address_Book_Problem
                             addressBookMain.DisplayAddressBook();
                             break;
                         case 5:
+                            multipleAddressBook.CheckDuplicateName();
+                            break;
+                        case 6:
                             flag = false;
                             break;
                         default:
