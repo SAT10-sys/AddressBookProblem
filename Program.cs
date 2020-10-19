@@ -10,6 +10,8 @@ namespace Address_Book_Problem
             string nameOfAddressBook = "";
             int choiceOfOperation;
             int choiceOfAddressBookOperation;
+            int numberOfCities = 0;
+            int numberOFStates = 0;
             Console.WriteLine(" Welcome to Address Book Program ");
             Console.WriteLine(" =============================== ");
             AddressBookMain addressBookMain = null;
@@ -49,7 +51,9 @@ namespace Address_Book_Problem
                                 Console.WriteLine("City doesn't exist");
                                 goto citySearch;
                             }
+                            numberOfCities++;
                         }
+                        Console.WriteLine("Total number of cities in address book: "+numberOfCities);
                         break;
                     case 4:
                         stateSearch:
@@ -67,7 +71,9 @@ namespace Address_Book_Problem
                                 Console.WriteLine("State doesn't exist");
                                 goto stateSearch;
                             }
+                            numberOFStates++;
                         }
+                        Console.WriteLine("Total number of states in address book: "+numberOFStates);
                         break;
                     case 5:
                         flag = false;
