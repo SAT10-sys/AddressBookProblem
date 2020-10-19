@@ -66,5 +66,24 @@ namespace Address_Book_Problem
             Console.WriteLine("PHONE NUMBER: " + newDetailsOfPerson[6]);
             Console.WriteLine("EMAIL ID: " + newDetailsOfPerson[7]);
         }
+        public void RemoveUsingFirstName()
+        {
+            Console.WriteLine("Enter first name of the contact you want to delete");
+            string firstName = Console.ReadLine();
+            foreach (PersonContactDetails contact in set)
+            {
+                if (contact.firstName == firstName)
+                {
+                    set.Remove(contact);
+                    Console.WriteLine("Contact removed");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Name not found in address book");
+                    RemoveUsingFirstName();
+                }
+            }
+        }
     }
 }
