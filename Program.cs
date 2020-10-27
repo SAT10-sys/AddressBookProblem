@@ -20,7 +20,7 @@ namespace Address_Book_Problem
             {
                 StartAddressBook:
                 bool flag = true;
-                Console.WriteLine("Enter your choice of operation(1 or 2)\n1.ADD ADDRESS BOOK\n2.GET ADDRESS BOOK\n3.VIEW PERSON BY CITY\n4.VIEW PERSON BY STATE\n5.EXIT");
+                Console.WriteLine("Enter your choice of operation(1 to 5)\n1.ADD ADDRESS BOOK\n2.GET ADDRESS BOOK\n3.VIEW PERSON BY CITY\n4.VIEW PERSON BY STATE\n5.EXIT");
                 choiceOfOperation = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter name of Address Book");
                 nameOfAddressBook = Console.ReadLine();
@@ -87,8 +87,8 @@ namespace Address_Book_Problem
                     if (addressBookMain == null)
                         break;
                     OperationsOnAddressBook:
-                    Console.WriteLine("Please enter your choice of operation(1 to 4)");
-                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.SEARCH CONTACT BY CITY OR STATE\n7..EXIT");
+                    Console.WriteLine("Please enter your choice of operation(1 to 8)");
+                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.SEARCH CONTACT BY CITY OR STATE\n7.SORT ALPHABETICALLY BY FIRST NAME\n8.EXIT");
                     choiceOfAddressBookOperation = Convert.ToInt32(Console.ReadLine());
                     switch (choiceOfAddressBookOperation)
                     {
@@ -118,6 +118,9 @@ namespace Address_Book_Problem
                             multipleAddressBook.SearchPersonByCityStateOverMultipleAddressBook(cityOrState);
                             break;
                         case 7:
+                            addressBookMain.SortByName();
+                            goto OperationsOnAddressBook;
+                        case 8:
                             flag = false;
                             break;
                         default:

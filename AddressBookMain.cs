@@ -105,5 +105,12 @@ namespace Address_Book_Problem
         {
             return set;
         }
+        public HashSet<PersonContactDetails> SortByName()
+        {
+            List<PersonContactDetails> sortedList = set.OrderBy(x => x.firstName).ToList();
+            foreach(var name in sortedList)
+                Console.WriteLine(name.firstName);
+            return null;
+        }
     }
 }
