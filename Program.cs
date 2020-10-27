@@ -88,7 +88,7 @@ namespace Address_Book_Problem
                         break;
                     OperationsOnAddressBook:
                     Console.WriteLine("Please enter your choice of operation(1 to 8)");
-                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.SEARCH CONTACT BY CITY OR STATE\n7.SORT ALPHABETICALLY BY FIRST NAME\n8.EXIT");
+                    Console.WriteLine("\n1.ADD CONTACT\n2.EDIT CONTACT USING FIRST NAME\n3.REMOVE CONTACT USING FIRST NAME\n4.DISPLAY BOOK\n5.CHECK FOR DUPLICATE NAME\n6.SEARCH CONTACT BY CITY OR STATE\n7.SORT ALPHABETICALLY BY FIRST NAME\n8.SORT BY CITY, STATE AND ZIPCODE\n9.EXIT");
                     choiceOfAddressBookOperation = Convert.ToInt32(Console.ReadLine());
                     switch (choiceOfAddressBookOperation)
                     {
@@ -121,6 +121,9 @@ namespace Address_Book_Problem
                             addressBookMain.SortByName();
                             goto OperationsOnAddressBook;
                         case 8:
+                            addressBookMain.SortByCityStateZip();
+                            goto OperationsOnAddressBook;
+                        case 9:
                             flag = false;
                             break;
                         default:

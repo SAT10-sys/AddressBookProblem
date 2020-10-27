@@ -105,12 +105,23 @@ namespace Address_Book_Problem
         {
             return set;
         }
-        public HashSet<PersonContactDetails> SortByName()
+        public void SortByName()
         {
             List<PersonContactDetails> sortedList = set.OrderBy(x => x.firstName).ToList();
-            foreach(var name in sortedList)
+            foreach (var name in sortedList)
                 Console.WriteLine(name.firstName);
-            return null;
+        }
+        public void SortByCityStateZip()
+        {
+            List<PersonContactDetails> sortedListByCity = set.OrderBy(x => x.city).ToList();
+            List<PersonContactDetails> sortedListByState = set.OrderBy(x => x.state).ToList();
+            List<PersonContactDetails> sortedListByZip = set.OrderBy(x => x.zipCode).ToList();
+            foreach(var city in sortedListByCity)
+                Console.WriteLine(city.city);
+            foreach(var state in sortedListByState)
+                Console.WriteLine(state.state);
+            foreach(var zip in sortedListByZip)
+                Console.WriteLine(zip.zipCode);
         }
     }
 }
