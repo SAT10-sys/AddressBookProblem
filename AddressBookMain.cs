@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Dynamic;
 using System.Linq;
 using System.Globalization;
+using System.IO;
 
 namespace Address_Book_Problem
 {
@@ -25,6 +26,17 @@ namespace Address_Book_Problem
             detailsOfPerson = Console.ReadLine().Split(",");
             PersonContactDetails personContactDetails = new PersonContactDetails(detailsOfPerson[0], detailsOfPerson[1], detailsOfPerson[2], detailsOfPerson[3], detailsOfPerson[4], detailsOfPerson[5], detailsOfPerson[6], detailsOfPerson[7]);
             set.Add(personContactDetails);
+            string path = @"C:\Users\USER\source\repos\Address_Book_Problem\Address_Book_Problem\PersonInput.txt";
+            if(File.Exists(path))
+            {
+                using (StreamWriter writer = File.AppendText(path))
+                {
+                    writer.WriteLine(personContactDetails.firstName + " " + personContactDetails.lastName + " " + personContactDetails.address + " " + personContactDetails.city + " " + personContactDetails.state + " " + personContactDetails.zipCode + " " + personContactDetails.phoneNumber + " " + personContactDetails.emailID);
+                    writer.Close();
+                }
+            }
+            else
+                Console.WriteLine("No such file exists");
             Console.WriteLine("Contact added");
         }
         public void DisplayAddressBook()
@@ -41,9 +53,22 @@ namespace Address_Book_Problem
                 Console.WriteLine("PHONE NUMBER: " + contact.phoneNumber);
                 Console.WriteLine("EMAIL ID: " + contact.emailID);
             }
+            Console.WriteLine("Displaying using File IO Operations");
+            string path= @"C:\Users\USER\source\repos\Address_Book_Problem\Address_Book_Problem\PersonInput.txt";
+            if(File.Exists(path))
+            {
+                using (StreamReader reader = File.OpenText(path))
+                {
+                    string file = "";
+                    while((file=reader.ReadLine())!=null)
+                        Console.WriteLine(file);
+                }
+            }
+            else
+                Console.WriteLine("No Such File Exists");
         }
         public void EditUsingFirstName()
-        {
+        { 
             string[] newDetailsOfPerson = new string[8];
             Console.WriteLine("Enter first name of contact you want to edit ");
             string firstName = Console.ReadLine();
