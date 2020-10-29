@@ -130,6 +130,7 @@ namespace Address_Book_Problem
                             Console.WriteLine("Please enter valid choice");
                             goto OperationsOnAddressBook;
                     }
+                    AddressBookMain.ImplementCSVOperations();
                 }
             }
         }

@@ -6,12 +6,13 @@ using System.Dynamic;
 using System.Linq;
 using System.Globalization;
 using System.IO;
+using CsvHelper;
 
 namespace Address_Book_Problem
 {
     public class AddressBookMain
     {
-        HashSet<PersonContactDetails> set = new HashSet<PersonContactDetails>();
+        public static HashSet<PersonContactDetails> set = new HashSet<PersonContactDetails>();
         public AddressBookMain()
         {
             set = new HashSet<PersonContactDetails>();
@@ -38,6 +39,23 @@ namespace Address_Book_Problem
             else
                 Console.WriteLine("No such file exists");
             Console.WriteLine("Contact added");
+        }
+        public static void ImplementCSVOperations()
+        {
+            string path = @"C:\Users\USER\source\repos\Address_Book_Problem\Address_Book_Problem\Utility\PersonInfo.csv";
+            using (var reader = new StreamReader(path))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                Console.WriteLine("Data read from file");
+                foreach(PersonContactDetails element in set)
+                {
+                    Console.WriteLine("\t"+element.firstName+"\t"+element.lastName+"\t"+element.address+"\t"+element.city+"\t"+element.state+"\t"+element.zipCode+"\t"+element.phoneNumber+"\t"+element.emailID);
+                    Console.WriteLine("\n");
+                }
+                using (var writer = new StreamWriter(path))
+                using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    csvWriter.WriteRecords(set);
+            }
         }
         public void DisplayAddressBook()
         {
