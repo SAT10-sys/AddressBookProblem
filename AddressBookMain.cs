@@ -7,6 +7,7 @@ using System.Linq;
 using System.Globalization;
 using System.IO;
 using CsvHelper;
+using Newtonsoft.Json;
 
 namespace Address_Book_Problem
 {
@@ -55,6 +56,25 @@ namespace Address_Book_Problem
                 using (var writer = new StreamWriter(path))
                 using (var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture))
                     csvWriter.WriteRecords(set);
+            }
+        }
+        public static void ImplementJSONOperations()
+        {
+            string importFilePath = @"C:\Users\USER\source\repos\Address_Book_Problem\Address_Book_Problem\Utility\PersonInfo.csv";
+            string exportFilePath = @"C:\Users\USER\source\repos\Address_Book_Problem\Address_Book_Problem\Utility\PersonInfo.json";
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                Console.WriteLine("Reading done successfully from ContactInfo.csv file");
+                foreach (PersonContactDetails element in set)
+                {
+                    Console.WriteLine("\t" + element.firstName+"\t"+element.lastName+"\t"+element.address+"\t"+element.city+"\t"+element.state+"\t"+element.zipCode+"\t"+element.phoneNumber+"\t"+element.emailID);
+                    Console.WriteLine("\n");
+                }
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                using (StreamWriter streamWriter = new StreamWriter(exportFilePath))
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                    jsonSerializer.Serialize(writer, set);
             }
         }
         public void DisplayAddressBook()
